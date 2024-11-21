@@ -5,7 +5,7 @@ import java.util.Scanner;
  *
  * @author LUW72
  */
-public class KoPapirOllo 
+public class AdatBekeres 
 {
 
     public static void main(String[] args) 
