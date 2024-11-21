@@ -7,27 +7,40 @@ import java.util.Scanner;
  */
 public class KoPapirOllo 
 {
+    
+    public static int randomGenerator(int also_hatar, int felso_hatar)
+    {
+        Random rnd = new Random();
+        int randomszam = rnd.nextInt(also_hatar, felso_hatar +1);
+        //randomszam = 3;
+        
+        return randomszam;
+    }
 
+    private static String Bekeres_szoveg(){
+        Scanner sc = new Scanner(System.in);
+        String szoveg = "";
+        
+        System.out.println("Kő/papír/olló, ide írd a tipped: ");
+        szoveg = sc.nextLine();
+        
+        while(szoveg.isBlank() && szoveg.isEmpty()){
+            szoveg = sc.nextLine();
+        }
+        
+        return szoveg.toLowerCase();
+    }
+    
     public static void main(String[] args) 
     {
         System.out.println("Mit választasz?\n1. Kő\n2. Papír\n3. Olló\nVálasztásod (szöveggel): ");
-        Scanner sc = new Scanner(System.in);
-        String szoveg = sc.nextLine().toLowerCase();;
         
-        while(szoveg.isEmpty() && szoveg.isBlank())
-        {
-            System.out.println("Kő/papír/olló, ide írd a tipped: ");
-            szoveg = sc.nextLine().toLowerCase();
-        }
- 
-        Random rnd = new Random();
-        int randomszam = rnd.nextInt(1, 4);
-        randomszam = 3;
+        String atengedett_szoveg = Bekeres_szoveg();
         
         String eszkoz = "";
 
-        
-        switch (randomszam) {
+        switch (randomGenerator(1,3)) 
+        {
             case 1:
                 eszkoz = "kő";
                 break;
@@ -38,28 +51,36 @@ public class KoPapirOllo
                 eszkoz = "olló";
                 break;
         }
-        System.out.println(eszkoz);
+        //System.out.println(eszkoz);
         
         String meccs = "Nem nyert";
-        if (szoveg.equals(eszkoz))
+        if (atengedett_szoveg.equals(eszkoz))
         {
             meccs = "Nyert";
         }
         
         System.out.println("Az eredmény: " + meccs);
         
+        // ----------------------------------------
         // Tanári változat
+        
+        meccs = "Nem nyertél";
+        
         System.out.println("-------------------------");
         System.out.println("Mit választasz?\n1. Kő\n2. Papír\n3. Olló\nválasztásod (1,2,3): ");
+        Scanner sc = new Scanner(System.in);
+        
         int valasztas = sc.nextInt();
-        System.out.println("A gép választása: " + randomszam);
-                
-        if(randomszam == valasztas)
+        
+        int generalt = randomGenerator(1, 3);
+        
+        System.out.println("A gép választása: " + generalt);
+        
+        if(generalt == valasztas)
         {
             meccs = "Nyertél";
         }
 
         System.out.println("Az eredmény: " + meccs);
     }
-    
 }
