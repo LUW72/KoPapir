@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class KoPapirOllo 
 {
     
-    public static int randomGenerator(int also_hatar, int felso_hatar)
+    private static int randomGenerator(int also_hatar, int felso_hatar)
     {
         Random rnd = new Random();
         int randomszam = rnd.nextInt(also_hatar, felso_hatar +1);
@@ -17,44 +17,46 @@ public class KoPapirOllo
         return randomszam;
     }
 
-    private static String Bekeres_szoveg(){
+    private static String szovegBekero(){
         Scanner sc = new Scanner(System.in);
         String szoveg = "";
         
-        System.out.println("Kő/papír/olló, ide írd a tipped: ");
+        String input_szoveg = "Ide írd a tipped:";
+        System.out.println(input_szoveg);
         szoveg = sc.nextLine();
-        
-        while(szoveg.isBlank() && szoveg.isEmpty()){
+       
+        while (szoveg == null || szoveg.isBlank() || !szoveg.matches("\\p{L}+([ \\p{L}]+)*")){
+            System.out.println("Beviteli hiba! " + input_szoveg);
             szoveg = sc.nextLine();
         }
         
         return szoveg.toLowerCase();
     }
     
+    private static String eszkozGenerator()
+    {
+        String eszkoz = "";
+        eszkoz = switch (randomGenerator(1,3)) {
+            case 1 -> "kő";
+            case 2 -> "papír";
+            default -> "olló";
+        };
+        return eszkoz;
+    }
+      
     public static void main(String[] args) 
     {
-        System.out.println("Mit választasz?\n1. Kő\n2. Papír\n3. Olló\nVálasztásod (szöveggel): ");
+        // Szöveges bevitel
         
-        String atengedett_szoveg = Bekeres_szoveg();
+        System.out.println("Mit választasz?\n1. Kő\n2. Papír\n3. Olló\nVálasztásod (szöveggel)");
         
-        String eszkoz = "";
+        String ellenorzott_szoveg = szovegBekero();
+        String eszkoz = eszkozGenerator();
 
-        switch (randomGenerator(1,3)) 
-        {
-            case 1:
-                eszkoz = "kő";
-                break;
-            case 2:
-                eszkoz = "papír";
-                break;
-            default:
-                eszkoz = "olló";
-                break;
-        }
-        //System.out.println(eszkoz);
+        System.out.println("A gép választása: " + eszkoz);
         
         String meccs = "Nem nyert";
-        if (atengedett_szoveg.equals(eszkoz))
+        if (ellenorzott_szoveg.equals(eszkoz))
         {
             meccs = "Nyert";
         }
@@ -62,11 +64,11 @@ public class KoPapirOllo
         System.out.println("Az eredmény: " + meccs);
         
         // ----------------------------------------
-        // Tanári változat
+        // Tanári változat - számos bevitel - input: nem ellenőrzött
         
         meccs = "Nem nyertél";
         
-        System.out.println("-------------------------");
+        System.out.println("-------------------------\nSzámos bevitellel:\n-------------------------");
         System.out.println("Mit választasz?\n1. Kő\n2. Papír\n3. Olló\nválasztásod (1,2,3): ");
         Scanner sc = new Scanner(System.in);
         
