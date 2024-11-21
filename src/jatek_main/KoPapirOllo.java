@@ -10,35 +10,38 @@ public class KoPapirOllo
 
     public static void main(String[] args) 
     {
-        // Kérdés, amire a választ várjuk
-        System.out.println("Szöveg: ");
+        System.out.println("Kő/papír/olló, ide írd a tipped: ");
         
-        // Szöveg bekérés
-        
-        // A konzolról való beolvasást a Scanner osztály valósítja meg Java nyelven, azaz a Java API biztosítja
-        // Scanner osztály használatához a Scanner osztályból létrehozunk egy objektumot sc néven (sc -> példány)
-        // Az sc-n keresztüle lérjük a Scanner szolgáltatásait
         Scanner sc = new Scanner(System.in);
         
         String szoveg = sc.nextLine();
         
-        System.out.println("A szöveg:" + szoveg);
-        
-        // Szám bekérés
-        
-        System.out.println("Szám: ");
-        int egesz = sc.nextInt(); // Azért, mert az int után ott marad a \r\n (enter), és azt olvassa ki
-        
-        System.out.println("A szám: " + egesz);
-        
-        String eszkoz = "";
         Random rnd = new Random();
         int randomszam =  rnd.nextInt(1, 4);
+        String eszkoz = "";
         
+        switch (randomszam) {
+            case 1:
+                eszkoz = "kő";
+                break;
+            case 2:
+                eszkoz = "papír";
+                break;
+            default:
+                eszkoz = "olló";
+                break;
+        }
+        System.out.println(eszkoz);
+        
+        String meccs = "Nem nyert";
+        if (szoveg.equals(eszkoz))
+        {
+            meccs = "Nyert";
         }
         
-        private String void Randomszam
-    
+        System.out.println(meccs);
+        
+        
     }
     
 }

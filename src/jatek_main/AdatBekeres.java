@@ -29,16 +29,8 @@ public class AdatBekeres
         System.out.println("Szám: ");
         int egesz = sc.nextInt(); // Azért, mert az int után ott marad a \r\n (enter), és azt olvassa ki
         
-        System.out.println("A szám: " + egesz);
-        
-        String eszkoz = "";
-        Random rnd = new Random();
-        int randomszam =  rnd.nextInt(1, 4);
-        
-        }
-        
-        private String void Randomszam
-    
+        System.out.println("A szám: " + egesz);     
+           
     }
     
 }
