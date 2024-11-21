@@ -68,7 +68,7 @@ public class KoPapirOllo
         
         meccs = "Nem nyertél";
         
-        System.out.println("-------------------------\nSzámos bevitellel:\n-------------------------");
+        System.out.println("\n-------------------------\nSzámos bevitellel:\n-------------------------");
         System.out.println("Mit választasz?\n1. Kő\n2. Papír\n3. Olló\nválasztásod (1,2,3): ");
         Scanner sc = new Scanner(System.in);
         
